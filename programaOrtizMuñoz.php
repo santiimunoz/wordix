@@ -26,7 +26,7 @@ function cargarColeccionPalabras()
         "GATOS", "GOTAS", "HUEVO", "TINTO", "NAVES",
         "VERDE", "MELON", "YUYOS", "PIANO", "PISOS",
         "CIERVO", "LORO", "RATON", "PIRAMIDE", "ZORRO"
-        /* Agregar 5 palabras más "HECHO POR SANTII" */
+    
     ];
 
     return ($coleccionPalabras);
@@ -49,19 +49,26 @@ function cargarColeccionPalabras()
 //Proceso:
 
 $partida = jugarWordix("MELON", strtolower("MaJo"));
-//print_r($partida);
-//imprimirResultado($partida);
+print_r($partida);
+imprimirResultado($partida);
 
 
 
-/*
+
 do {
-    $opcion = ...;
+    
+    $opcion = 1;
 
     
     switch ($opcion) {
         case 1: 
-            //completar qué secuencia de pasos ejecutar si el usuario elige la opción 1
+            echo "ingrese su nombre";
+            $usuario=trim(fgets(STDIN));
+            
+            echo "ingrese un nùmero de palabra para jugar";
+            $numPalabra=trim(fgets(STDIN));
+
+            jugarWordix($numPalabra,$usuario);
 
             break;
         case 2: 
@@ -75,5 +82,5 @@ do {
         
             //...
     }
-} while ($opcion != X);
-*/
+} while ($opcion == "salir");
+
