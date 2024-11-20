@@ -33,6 +33,7 @@ function solicitarNumeroEntre($min, $max)
 {
     //int $numero
 
+
     $numero = trim(fgets(STDIN));
 
     if (is_numeric($numero)) { //determina si un string es un número. puede ser float como entero.
