@@ -331,11 +331,43 @@ function esIntentoGanado($estructuraPalabraIntento)
 /**
  * ****COMPLETAR***** documentación de la intefaz
  */
-function obtenerPuntajeWordix()  /* ****COMPLETAR***** parámetros formales necesarios */
-{
+function obtenerPuntajeWordix($intento,$palabra){
+    $puntaje=0;
+    $longitud=strlen($palabra);
+         
+    if($intento==1){
+        $puntaje=6;
+    }else if($intento==2){
+        $puntaje=5;
+    }else if($intento==3){
+        $puntaje=4;
+    }else if($intento==4){
+        $puntaje=3;
+    }else if($intento==5){
+        $puntaje=2;
+    }else if($intento==6){
+        $puntaje=1;
+    }
 
-    /* ****COMPLETAR***** cuerpo de la función*/
-    return 0;
+    for($i=0;$i<$longitud;$i++){    
+
+        if($palabra[$i]=="A" || $palabra[$i]=="E" || $palabra[$i]=="I" || $palabra[$i]=="O" || $palabra[$i]=="U"){
+           $puntaje= $puntaje + 1;
+        }
+        else if($palabra[$i]=="B" || $palabra[$i]=="C" || $palabra[$i]=="D" || $palabra[$i]=="F" ||
+         $palabra[$i]=="G" || $palabra[$i]=="H" || $palabra[$i]=="J" || $palabra[$i]=="K" ||
+          $palabra[$i]=="L" || $palabra[$i]=="M"){
+            $puntaje=$puntaje+2;
+          }
+          else if($palabra[$i]=="N" || $palabra[$i]=="P" || $palabra[$i]=="Q"
+         || $palabra[$i]=="R" || $palabra[$i]=="S" || $palabra[$i]=="T" || $palabra[$i]=="V"
+          || $palabra[$i]=="w" || $palabra[$i]=="x" || $palabra[$i]=="y"
+         || $palabra[$i]=="Z"){
+            $puntaje= $puntaje+3;
+         }
+        }
+
+    return $puntaje;
 }
 
 /**
@@ -370,7 +402,7 @@ function jugarWordix($palabraWordix, $nombreUsuario)
 
     if ($ganoElIntento) {
         $nroIntento--;
-        $puntaje = obtenerPuntajeWordix();
+        $puntaje = obtenerPuntajeWordix($nroIntento, $palabraWordix);
         echo "Adivinó la palabra Wordix en el intento " . $nroIntento . "!: " . $palabraIntento . " Obtuvo $puntaje puntos!";
     } else {
         $nroIntento = 0; //reset intento

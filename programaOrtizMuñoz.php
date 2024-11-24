@@ -194,8 +194,8 @@ $coleccionPartidas[$cantPartidas]=$partida;
             
             break;
         case 2: 
-            $coleccionPalabras=cargarColeccionPalabras();
-$coleccionPartidas=cargarPartidas();
+ $coleccionPalabras=cargarColeccionPalabras();
+ $coleccionPartidas=cargarPartidas();
 
 $cantPartidas=count($coleccionPartidas);
 $cantPalabras=count($coleccionPalabras);
