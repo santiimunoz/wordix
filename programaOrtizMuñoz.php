@@ -33,7 +33,7 @@ function cargarColeccionPalabras(){
 
 /**
  * Compila la coleccion de partidas
- * @retrun array
+ * @return array
 */
 function cargarPartidas(){
    $coleccionPartidas=[];
@@ -54,7 +54,7 @@ return $coleccionPartidas;
 
 
 /**
- * Es el menu de opciones
+ * Es el menu de opciones, donde el jugador podra elegir una opcion
  * @return string
  */
 function seleccionarOpcion(){
@@ -76,6 +76,11 @@ function seleccionarOpcion(){
 
 //punto 5
 
+
+/**
+ * Esta funcion se encarga de que el jugador eliga una opcion valida dentro de las palabras que ya existen
+ * @return int
+ */
 function rangoValores($numero, $rango){
      while($numero>$rango || $numero<0 ){
                 echo "ERROR \ndebe elegir un numero disponible";
@@ -86,6 +91,10 @@ function rangoValores($numero, $rango){
 }
 
 
+/**
+ * Solicita el nombre del jugador, y se encarga de que el nombre sea alfabetico (contenga letras)
+ * @return string
+ */
 function solicitarJugador(){
     echo "ingrese el nombre del jugador";
     $user=trim(fgets(STDIN));
@@ -99,6 +108,10 @@ function solicitarJugador(){
 }
 
 
+/**
+ * Esta funcion ordena alfabeticamente el listado de partidas
+ * @return int
+ */
 function cmp($a,$b){
     if($a["jugador"]==$b["jugador"]){
         if ($a["palabraWordix"] < $b["palabraWordix"]){
@@ -116,6 +129,10 @@ function cmp($a,$b){
 }
 
 
+/**
+ * Imprime en pantalla el resultado de la partida jugada
+ * @return string
+ */
 function imprimirResultado($partidaJugada){
     $resultado=print_r($partidaJugada);
 
@@ -123,6 +140,10 @@ function imprimirResultado($partidaJugada){
 }
 
 
+/**
+ * Esta funcion agrega palabras al listado
+ * @return array
+ */
 function agregarPalabra($arreglo,$palabr){
     $cant=count($arreglo);
     $arreglo[$cant]=$palabr;
@@ -131,6 +152,11 @@ function agregarPalabra($arreglo,$palabr){
 }
 
 
+/**
+ * Imprime en pantalla la derrota del jugador, si es que perdio, si no, imprime en cuantos intentos gano. Independientemente, 
+ * imprimira los datos de la partida
+ * @return string
+ */
 function datosPartida($arreglo,$numero){     
     if($arreglo[$numero]["intentos"]==6 && $arreglo[$numero]["puntaje"]==0){
         $puntaje="no adivino la palabra";
