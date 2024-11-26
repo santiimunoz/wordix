@@ -30,14 +30,13 @@ function cargarColeccionPalabras(){
     return $coleccionPalabras;
 }
 
+
 /**
  * Compila la coleccion de partidas
  * @retrun array
 */
-
 function cargarPartidas(){
    $coleccionPartidas=[];
-
    $coleccionPartidas=[["palabraWordix"=>"MUJER", "jugador"=>"santi","intentos"=>1, "puntaje"=>15],
                        ["palabraWordix"=>"PERRO", "jugador"=>"lucas","intentos"=>6, "puntaje"=>12],
                        ["palabraWordix"=>"YUYOS", "jugador"=>"valen","intentos"=>3, "puntaje"=>15],
@@ -78,43 +77,44 @@ function seleccionarOpcion(){
 //punto 5
 
 function rangoValores($numero, $rango){
-     
      while($numero>$rango || $numero<0 ){
-
                 echo "ERROR \ndebe elegir un numero disponible";
                 $numero=trim(fgets(STDIN));
             }
+
     return $numero;
 }
+
 
 function solicitarJugador(){
     echo "ingrese el nombre del jugador";
     $user=trim(fgets(STDIN));
     $user=strtolower($user);
-
     while(!(esPalabra($user))){
         echo "debe ingresar un nombre alfabetico";
         $user= strtolower(trim(fgets(STDIN)));
    }
 
-     
-
-
      return $user;
 }
+
 
 function cmp($a,$b){
     if($a["jugador"]==$b["jugador"]){
         if ($a["palabraWordix"] < $b["palabraWordix"]){
             $orden = -1;
         }
-    }else if($a["jugador"]<$b["jugador"]){
+    }
+    else if($a["jugador"]<$b["jugador"]){
         $orden=-1;
-    }else{
+    }
+    else{
         $orden=1;
     }
+
     return $orden;
 }
+
 
 function imprimirResultado($partidaJugada){
     $resultado=print_r($partidaJugada);
@@ -122,10 +122,9 @@ function imprimirResultado($partidaJugada){
     return $resultado;
 }
 
+
 function agregarPalabra($arreglo,$palabr){
-
     $cant=count($arreglo);
-
     $arreglo[$cant]=$palabr;
 
     return $arreglo;
@@ -133,10 +132,10 @@ function agregarPalabra($arreglo,$palabr){
 
 
 function datosPartida($arreglo,$numero){     
-
     if($arreglo[$numero]["intentos"]==6 && $arreglo[$numero]["puntaje"]==0){
         $puntaje="no adivino la palabra";
-    }else{
+    }
+    else{
         $puntaje="adivino la palabra en: " . $arreglo[$numero]["intentos"] . " intentos.";
     }
 
@@ -177,14 +176,10 @@ $opcion=seleccionarOpcion();
 
 do { 
     
-    
  switch ($opcion) {
-
      case 1: 
         $cantPalabras=$cantPalabras-1;
-
         $parar=true;
-
         $i=0;
 
             $jugador=solicitarJugador();
@@ -220,6 +215,7 @@ do {
             
         break;
         case 2: 
+
             $cantPalabras=$cantPalabras-1;
             $j=0;
 $parar=true;
@@ -289,7 +285,6 @@ $i=$i+1;
 imprimirResultado($partidaGanada);
 
 
-
         break;
         case 5:
 
@@ -316,15 +311,20 @@ for($i=0;$i<$cantPartidas;$i++){
         }
         if($coleccionPartidas[$i]["intentos"]==1){
             $intento1=$intento1+1;
-        }else if($coleccionPartidas[$i]["intentos"]==2){
+        }
+        else if($coleccionPartidas[$i]["intentos"]==2){
             $intento2=$intento2+1;
-        }else if($coleccionPartidas[$i]["intentos"]==3){
+        }
+        else if($coleccionPartidas[$i]["intentos"]==3){
             $intento3=$intento3+1;
-        }else if($coleccionPartidas[$i]["intentos"]==4){
+        }
+        else if($coleccionPartidas[$i]["intentos"]==4){
             $intento4=$intento4+1;
-        }else if($coleccionPartidas[$i]["intentos"]==5){
+        }
+        else if($coleccionPartidas[$i]["intentos"]==5){
             $intento5=$intento5+1;
-        }else if($coleccionPartidas[$i]["intentos"]){
+        }
+        else if($coleccionPartidas[$i]["intentos"]){
             $intento6=$intento6+1;
         }
 
@@ -332,7 +332,8 @@ for($i=0;$i<$cantPartidas;$i++){
 }
 if($totalVictorias==0){
     $porcentajeVictorias=0;
-}else{
+}
+else{
     $porcentajeVictorias=($totalVictorias/$totalPartidas)*100;
 }
  
@@ -340,7 +341,6 @@ echo "jugador: " . $jugador . "\npartidas: " . $totalPartidas . "\npuntaje total
 . "\nvictorias: " . $totalVictorias . "\nporcentaje victorias: " . $porcentajeVictorias . "%" .
  "\nadivinadas: " . "\n   intento 1: " . $intento1 . "\n   intento 2: " . $intento2 . "\n   intento 3: " . 
  $intento3 . "\n   intento 4: " . $intento4 . "\n   intento 5: " . $intento5 . "\n   intento 6: " . $intento6;
-
 
             break;
             case 6:
@@ -356,16 +356,15 @@ print_r($coleccionPartidas);
 
 $palabra=leerPalabra5letras();
 
-   
 $coleccionPalabras=agregarPalabra($coleccionPalabras,$palabra);
-
 
 print_r($coleccionPalabras);
                     break;
                    
     }
     $opcion=seleccionarOpcion(); 
-} while ($opcion != 8);
+}
+ while ($opcion != 8);
 
 if($opcion=8){
     echo "usted a salido del menu opcional!";
