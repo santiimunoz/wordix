@@ -3,7 +3,7 @@ juego wordix desarrollado en introducción a la programación(FAI)
 
 # Materia 2024
 
-Introducciòn a la Programaciòn
+Introducciòn a la Programación
 Tecnicatura en Desarrollo Web
 Facultad de Informàtica
 Universidad Nacional del Comahue
@@ -11,7 +11,7 @@ Universidad Nacional del Comahue
 # Integrantes del Grupo
 
 **Muñoz Braian Santiago** - Legajo 5558 - mail: ssantii.m13@gmail.com - github: santiimunoz
-**Ortiz Lucas** - Legajo - mail: - github: luquitas45
+**Ortiz Lucas Emiliano** - Legajo 5561 - mail: lucaseortiz45@gmail.com - github: luquitas45
 
 
 
