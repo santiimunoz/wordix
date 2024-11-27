@@ -71,10 +71,90 @@ function seleccionarOpcion(){
     return $option;
 }
 
-//punto 4
-/*$palabra= leerPalabra5Letras();*/
+/**
+ * Esta funcion devuelve la primera partida ganada, si no, devuelve -1
+ * @param array $arreglo
+ * @param int $j
+ * @return string
+ */
+function primerPartida($arreglo, $j){
+    $i = 0;
+    $parar = true;
+    $cantPartidas = count($arreglo);
+    while($i < $cantPartidas && $parar){
+        if($arreglo[$i]["jugador"] == $j && $arreglo[$i]["puntaje"] != 0){
+            $partidaGanada = "partida WORDIX " . $i . ":" . " palabra " . $arreglo[$i]["palabraWordix"] .
+            "\njugador:" . $arreglo[$i]["jugador"] . "\npuntaje: " . $arreglo[$i]["puntaje"] . 
+            "\nintento: adivino la palabra en " . $arreglo[$i]["intentos"] . " intentos.";
+            $parar = false;
+        }
+        else{
+            $partidaGanada= "El jugador " . $j . " no gano ninguna partida";
+        }
+    $i = $i + 1;
+    }
 
-//punto 5
+    return $partidaGanada;
+}
+
+
+/**
+ * Esta fincion muestra los datos del jugador
+ * @param array $arreglo
+ * @param int $j
+ */
+function mostrarDatos($arreglo, $j){
+    $totalPartidas = 0;
+    $totalPuntaje = 0;
+    $totalVictorias = 0;
+    $intento1 = 0;
+    $intento2 = 0;
+    $intento3 = 0;
+    $intento4 = 0;
+    $intento5 = 0;
+    $intento6 = 0;
+    $cantPartidas = count($arreglo);
+
+    for($i = 0; $i < $cantPartidas; $i++){
+        if($j == $arreglo[$i]["jugador"]){
+            $totalPartidas = $totalPartidas + 1;
+            $totalPuntaje = $totalPuntaje + $arreglo[$i]["puntaje"];
+            if($arreglo[$i]["puntaje"] != 0){
+                $totalVictorias = $totalVictorias+ 1;
+            }
+            if($arreglo[$i]["intentos"] == 1){
+                $intento1 = $intento1 + 1;
+            }
+            else if($arreglo[$i]["intentos"] == 2){
+                $intento2 = $intento2 + 1;
+            }
+            else if($arreglo[$i]["intentos"] == 3){
+                $intento3 = $intento3 + 1;
+            }
+            else if($arreglo[$i]["intentos"] == 4){
+                $intento4 = $intento4 + 1;
+            }
+            else if($arreglo[$i]["intentos"] == 5){
+                $intento5 = $intento5 + 1;
+            }
+            else if($arreglo[$i]["intentos"]){
+                $intento6 = $intento6 + 1;
+            }
+        }
+    }
+
+    if($totalVictorias == 0){
+        $porcentajeVictorias = 0;
+    }
+    else{
+        $porcentajeVictorias = ($totalVictorias/$totalPartidas) * 100;
+    }
+
+    echo "jugador: " . $j . "\npartidas: " . $totalPartidas . "\npuntaje total: " . $totalPuntaje 
+    . "\nvictorias: " . $totalVictorias . "\nporcentaje victorias: " . $porcentajeVictorias . "%" .
+    "\nadivinadas: " . "\n   intento 1: " . $intento1 . "\n   intento 2: " . $intento2 . "\n   intento 3: " . 
+    $intento3 . "\n   intento 4: " . $intento4 . "\n   intento 5: " . $intento5 . "\n   intento 6: " . $intento6;
+}
 
 
 /**
@@ -114,17 +194,17 @@ function solicitarJugador(){
  * @param array $a, $b
  * @return int
  */
-function cmp($a,$b){
-    if($a["jugador"]==$b["jugador"]){
+function ordenamiento($a,$b){
+    if($a["jugador"] == $b["jugador"]){
         if ($a["palabraWordix"] < $b["palabraWordix"]){
             $orden = -1;
         }
     }
-    else if($a["jugador"]<$b["jugador"]){
-        $orden=-1;
+    else if($a["jugador"] < $b["jugador"]){
+        $orden = -1;
     }
     else{
-        $orden=1;
+        $orden = 1;
     }
 
     return $orden;
@@ -172,7 +252,7 @@ function datosPartida($arreglo,$numero){
         $puntaje="adivino la palabra en: " . $arreglo[$numero]["intentos"] . " intentos.";
     }
 
-   echo "Partida WORDIX nùmero: " . $numero . "\npalabra: " . $arreglo[$numero]["palabraWordix"] . "\njugador: " .
+    echo "Partida WORDIX nùmero: " . $numero . "\npalabra: " . $arreglo[$numero]["palabraWordix"] . "\njugador: " .
     $arreglo[$numero]["jugador"] 
      . "\npuntaje: " . $arreglo[$numero]["puntaje"] . " puntos" . "\nintento: " . $puntaje;
  }
@@ -197,21 +277,13 @@ $cantPalabras=count($coleccionPalabras);
 
 //Proceso:
 
-
-
-//$partida = jugarWordix("MELON", strtolower("Majo"));
-//print_r($partida);
-/*imprimirResultado($partida);*/
-
-
 $opcion=seleccionarOpcion();
-
 
 do { 
     
  switch ($opcion) {
      case 1: 
-        $cantPalabras = $cantPalabras-1;
+        $cantPalabras = $cantPalabras - 1;
         $parar = true;
         $i = 0;
 
@@ -242,7 +314,7 @@ do {
 
             $partida = jugarWordix($palabra, strtolower($jugador));
 
-            $coleccionPartidas[$cantPartidas]=$partida;
+            $coleccionPartidas[] = $partida;
 
             imprimirResultado($partida);
             
@@ -259,16 +331,16 @@ do {
         $nums = rand(0,$cantPalabras);
         echo $nums;
 
-       $palabra=$coleccionPalabras[$nums];
+       $palabra = $coleccionPalabras[$nums];
 
         while($j < $cantPartidas && $parar){
             if($jugador == $coleccionPartidas[$j]["jugador"] && 
             $coleccionPalabras[$nums] == $coleccionPartidas[$j]["palabraWordix"]){
-                $numPalabra=rand(0,$cantPalabras);
+                $numPalabra = rand(0,$cantPalabras);
          
                 if($numPalabra != $nums){ 
                     $parar = false;
-                    $palabra=$coleccionPalabras[$numPalabra];
+                    $palabra = $coleccionPalabras[$numPalabra];
                 }
             }
         $j = $j + 1;
@@ -276,7 +348,7 @@ do {
 
         $partida = jugarWordix($palabra, strtolower($jugador));
 
-        $coleccionPartidas[$cantPartidas] = $partida;
+        $coleccionPartidas[] = $partida;
 
         imprimirResultado($partida);
 
@@ -294,26 +366,15 @@ do {
         break;
 
     case 4:
-        $i = 0;
-        $parar = true;
-
         echo "ingrese el nombre del jugador";
         $jugador = trim(fgets(STDIN));
 
-        while($i < $cantPartidas && $parar){
-            if($coleccionPartidas[$i]["jugador"] == $jugador && $coleccionPartidas[$i]["puntaje"] != 0){
-                $partidaGanada= "partida WORDIX " . $i . ":" . " palabra " . $coleccionPartidas[$i]["palabraWordix"] .
-                "\njugador:" . $coleccionPartidas[$i]["jugador"] . "\npuntaje: " . $coleccionPartidas[$i]["puntaje"] . 
-                "\nintento: adivino la palabra en " . $coleccionPartidas[$i]["intentos"] . " intentos.";
-                $parar = false;
-            }
-            else{
-                $partidaGanada= "el jugador " . $jugador . " no gano ninguna partida";
-            }
-        $i = $i + 1;
+        if (primerPartida($coleccionPartidas, $jugador) != -1){
+            echo primerPartida($coleccionPartidas, $jugador);
         }
-
-        imprimirResultado($partidaGanada);
+        else {
+            echo "No hay partidas ganadas en ese jugador";
+        }
 
         break;
 
@@ -321,60 +382,12 @@ do {
         echo "ingrese un nombre de jugador";
         $jugador = trim(fgets(STDIN));
 
-        $totalPartidas = 0;
-        $totalPuntaje = 0;
-        $totalVictorias = 0;
-        $intento1 = 0;
-        $intento2 = 0;
-        $intento3 = 0;
-        $intento4 = 0;
-        $intento5 = 0;
-        $intento6 = 0;
-
-        for($i = 0; $i < $cantPartidas; $i++){
-            if($jugador == $coleccionPartidas[$i]["jugador"]){
-                $totalPartidas = $totalPartidas + 1;
-                $totalPuntaje = $totalPuntaje + $coleccionPartidas[$i]["puntaje"];
-                if($coleccionPartidas[$i]["puntaje"] != 0){
-                    $totalVictorias = $totalVictorias+ 1;
-                }
-                if($coleccionPartidas[$i]["intentos"] == 1){
-                    $intento1 = $intento1 + 1;
-                }
-                else if($coleccionPartidas[$i]["intentos"] == 2){
-                    $intento2 = $intento2 + 1;
-                }
-                else if($coleccionPartidas[$i]["intentos"] == 3){
-                    $intento3 = $intento3 + 1;
-                }
-                else if($coleccionPartidas[$i]["intentos"] == 4){
-                    $intento4 = $intento4 + 1;
-                }
-                else if($coleccionPartidas[$i]["intentos"] == 5){
-                    $intento5 = $intento5 + 1;
-                }
-                else if($coleccionPartidas[$i]["intentos"]){
-                    $intento6 = $intento6 + 1;
-                }
-            }
-        }
-
-        if($totalVictorias == 0){
-            $porcentajeVictorias = 0;
-        }
-        else{
-            $porcentajeVictorias = ($totalVictorias/$totalPartidas) * 100;
-        }
- 
-        echo "jugador: " . $jugador . "\npartidas: " . $totalPartidas . "\npuntaje total: " . $totalPuntaje 
-        . "\nvictorias: " . $totalVictorias . "\nporcentaje victorias: " . $porcentajeVictorias . "%" .
-        "\nadivinadas: " . "\n   intento 1: " . $intento1 . "\n   intento 2: " . $intento2 . "\n   intento 3: " . 
-        $intento3 . "\n   intento 4: " . $intento4 . "\n   intento 5: " . $intento5 . "\n   intento 6: " . $intento6;
+        echo mostrarDatos($coleccionPartidas, $jugador);
 
         break;
 
     case 6:
-        uasort($coleccionPartidas, 'cmp');
+        uasort($coleccionPartidas, 'ordenamiento');
 
         print_r($coleccionPartidas);
 
@@ -390,11 +403,12 @@ do {
         break;
                    
     }
-$opcion=seleccionarOpcion(); 
+
+$opcion = seleccionarOpcion(); 
 }
 
 while ($opcion != 8);
 
-if($opcion=8){
+if($opcion = 8){
     echo "usted a salido del menu opcional!";
 }
