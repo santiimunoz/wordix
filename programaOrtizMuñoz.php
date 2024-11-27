@@ -274,7 +274,6 @@ do {
  switch ($opcion) {
      case 1: 
 
-
             $jugador = solicitarJugador();
 
             echo "ingrese el numero de palabra con el que desea jugar";
@@ -381,6 +380,10 @@ do {
         $coleccionPalabras = agregarPalabra($coleccionPalabras,$palabra);
 
         print_r($coleccionPalabras);
+
+        $cantPalabras=count($coleccionPalabras);
+
+        $cantPalabras = $cantPalabras-1;
 
         break;
                    
