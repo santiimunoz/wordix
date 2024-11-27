@@ -7,7 +7,7 @@ include_once("wordix.php");
 /***** DATOS DE LOS INTEGRANTES *******/
 /**************************************/
 
-/* Muñoz, Santiago. FAI-5558. TECNICATURA EN DESARROLLO WEB. ssanti.m13@gmail.com . santiimunoz */
+/* Muñoz, Santiago. FAI-5558. TECNICATURA EN DESARROLLO WEB. ssantii.m13@gmail.com . santiimunoz */
 /* Ortiz, Lucas. FAI-5561 . TECNICATURA EN DESARROLLO WEB. lucaseortiz45@gmail.com . luquitas45*/
 
 
@@ -33,6 +33,7 @@ function cargarColeccionPalabras(){
 
 /**
  * Compila la coleccion de partidas
+ * arreglo indexado de arreglos asociativos
  * @return array
 */
 function cargarPartidas(){
@@ -55,7 +56,7 @@ return $coleccionPartidas;
 
 /**
  * Es el menu de opciones, donde el jugador podra elegir una opcion
- * @return string
+ * @return int
  */
 function seleccionarOpcion(){
     echo "\n\n1)Jugar al wordix con una palabra elegida 
