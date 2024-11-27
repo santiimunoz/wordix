@@ -229,7 +229,7 @@ function agregarPalabra($arreglo,$palabr){
  * imprimira los datos de la partida
  * @param array $arreglo
  * @param int $numero
- * @return string
+ * string $puntaje
  */
 function datosPartida($arreglo,$numero): void{     
     if($arreglo[$numero]["intentos"]==6 && $arreglo[$numero]["puntaje"]==0){
