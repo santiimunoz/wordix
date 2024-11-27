@@ -217,8 +217,7 @@ function imprimirResultado($partidaJugada){
  * @return array
  */
 function agregarPalabra($arreglo,$palabr){
-    $cant=count($arreglo);
-    $arreglo[$cant]=$palabr;
+    $arreglo[]=$palabr;
 
     return $arreglo;
 }
