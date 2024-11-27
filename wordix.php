@@ -27,13 +27,14 @@ const ESTADO_LETRA_PERTENECE = "pertenece";
 /**************************************/
 
 /**
- *  ****COMPLETAR*****
+ * Funcion que le solicita al usuario ingresar otro nùmero si 
+ * no se cumplen ciertas condiciones
+ * @param float $min, $max
+ * @return float
  */
 function solicitarNumeroEntre($min, $max)
 {
     //int $numero
-
-
     $numero = trim(fgets(STDIN));
 
     if (is_numeric($numero)) { //determina si un string es un número. puede ser float como entero.
@@ -121,7 +122,8 @@ function escribirSegunEstado($texto, $estado)
 }
 
 /**
- * ****COMPLETAR*****
+ *funcion que muestra un mensaje de bienvenida
+ *@param string $usuario
  */
 function escribirMensajeBienvenida($usuario)
 {
@@ -134,11 +136,14 @@ function escribirMensajeBienvenida($usuario)
 
 
 /**
- * ****COMPLETAR*****
+ *funciòn que verifica si un valor ingresado es de tipo alfabetico 
+ *@param string $cadena
+ *float $cantCaracteres, $i
+ *boolean $esLetra
+ *@return bool
  */
 function esPalabra($cadena)
 {
-    //int $cantCaracteres, $i, boolean $esLetra
     $cantCaracteres = strlen($cadena);
     $esLetra = true;
     $i = 0;
@@ -150,7 +155,10 @@ function esPalabra($cadena)
 }
 
 /**
- *  ****COMPLETAR*****
+ *funcion que le pide al usuario ingresar una palabra de 5 letras
+ *si no se cumple esa condiciòn, llama a la estructura repetitiva while
+ *que finaliza cuando el usario ingresa una palabra de 5 letras
+ *string $palabra
  */
 function leerPalabra5Letras()
 {
@@ -329,7 +337,11 @@ function esIntentoGanado($estructuraPalabraIntento)
 }
 
 /**
- * ****COMPLETAR***** documentación de la intefaz
+ *funcion que calcula el puntaje
+ *@param int $intento
+ *@param string $palabra
+ *float $puntaje, $longitud
+ *@return float
  */
 function obtenerPuntajeWordix($intento,$palabra){
     $puntaje=0;
