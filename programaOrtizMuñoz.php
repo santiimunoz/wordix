@@ -56,7 +56,7 @@ return $coleccionPartidas;
 
 /**
  * Es el menu de opciones, donde el jugador podra elegir una opcion
- * @return int
+ * @return string
  */
 function seleccionarOpcion(){
     echo "\n\n1)Jugar al wordix con una palabra elegida 
@@ -202,13 +202,12 @@ function ordenamiento($a,$b){
 
 /**
  * Imprime en pantalla el resultado de la partida jugada
- * @param int $partidaJugada
- * @return string
+ * @param array $partidaJugada
+ * 
  */
 function imprimirResultado($partidaJugada){
-    $resultado=print_r($partidaJugada);
+    print_r($partidaJugada);
 
-    return $resultado;
 }
 
 
@@ -233,7 +232,7 @@ function agregarPalabra($arreglo,$palabr){
  * @param int $numero
  * @return string
  */
-function datosPartida($arreglo,$numero){     
+function datosPartida($arreglo,$numero): void{     
     if($arreglo[$numero]["intentos"]==6 && $arreglo[$numero]["puntaje"]==0){
         $puntaje="no adivino la palabra";
     }
