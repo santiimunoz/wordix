@@ -184,6 +184,7 @@ function solicitarJugador(){
  * @return int
  */
 function ordenamiento($a,$b){
+    $orden = 1;
     if($a["jugador"] == $b["jugador"]){
         if ($a["palabraWordix"] < $b["palabraWordix"]){
             $orden = -1;
@@ -192,9 +193,7 @@ function ordenamiento($a,$b){
     else if($a["jugador"] < $b["jugador"]){
         $orden = -1;
     }
-    else{
-        $orden = 1;
-    }
+    
 
     return $orden;
 }
