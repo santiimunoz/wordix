@@ -75,10 +75,7 @@ function seleccionarOpcion(){
  * Esta funcion devuelve la primera partida ganada, si no, devuelve -1
  * @param array $arreglo
  * @param int $j
-<<<<<<< HEAD
  * float $i
-=======
->>>>>>> d1793d0ff2635d5a8acd3e2c63a2c9cdb56f360e
  * @return string
  */
 function primerPartida($arreglo, $j){
@@ -99,88 +96,10 @@ function primerPartida($arreglo, $j){
     }
 
     return $partidaGanada;
-<<<<<<< HEAD
-=======
 }
 
 
 /**
- * Esta fincion muestra los datos del jugador
- * @param array $arreglo
- * @param int $j
- */
-function mostrarDatos($arreglo, $j){
-    $totalPartidas = 0;
-    $totalPuntaje = 0;
-    $totalVictorias = 0;
-    $intento1 = 0;
-    $intento2 = 0;
-    $intento3 = 0;
-    $intento4 = 0;
-    $intento5 = 0;
-    $intento6 = 0;
-    $cantPartidas = count($arreglo);
-
-    for($i = 0; $i < $cantPartidas; $i++){
-        if($j == $arreglo[$i]["jugador"]){
-            $totalPartidas = $totalPartidas + 1;
-            $totalPuntaje = $totalPuntaje + $arreglo[$i]["puntaje"];
-            if($arreglo[$i]["puntaje"] != 0){
-                $totalVictorias = $totalVictorias+ 1;
-            }
-            if($arreglo[$i]["intentos"] == 1){
-                $intento1 = $intento1 + 1;
-            }
-            else if($arreglo[$i]["intentos"] == 2){
-                $intento2 = $intento2 + 1;
-            }
-            else if($arreglo[$i]["intentos"] == 3){
-                $intento3 = $intento3 + 1;
-            }
-            else if($arreglo[$i]["intentos"] == 4){
-                $intento4 = $intento4 + 1;
-            }
-            else if($arreglo[$i]["intentos"] == 5){
-                $intento5 = $intento5 + 1;
-            }
-            else if($arreglo[$i]["intentos"]){
-                $intento6 = $intento6 + 1;
-            }
-        }
-    }
-
-    if($totalVictorias == 0){
-        $porcentajeVictorias = 0;
-    }
-    else{
-        $porcentajeVictorias = ($totalVictorias/$totalPartidas) * 100;
-    }
-
-    echo "jugador: " . $j . "\npartidas: " . $totalPartidas . "\npuntaje total: " . $totalPuntaje 
-    . "\nvictorias: " . $totalVictorias . "\nporcentaje victorias: " . $porcentajeVictorias . "%" .
-    "\nadivinadas: " . "\n   intento 1: " . $intento1 . "\n   intento 2: " . $intento2 . "\n   intento 3: " . 
-    $intento3 . "\n   intento 4: " . $intento4 . "\n   intento 5: " . $intento5 . "\n   intento 6: " . $intento6;
-}
-
-
-/**
- * Esta funcion se encarga de que el jugador eliga una opcion valida dentro de las palabras que ya existen
- * @param int $numero, $rango
- * @return int
- */
-function rangoValores($numero, $rango){
-     while($numero>$rango || $numero<0 ){
-                echo "ERROR \ndebe elegir un numero disponible";
-                $numero=trim(fgets(STDIN));
-            }
-
-    return $numero;
->>>>>>> d1793d0ff2635d5a8acd3e2c63a2c9cdb56f360e
-}
-
-
-/**
-<<<<<<< HEAD
  * Esta fincion muestra los datos del jugador
  * @param array $arreglo
  * @param int $j
@@ -242,8 +161,6 @@ function mostrarDatos($arreglo, $j){
 
 
 /**
-=======
->>>>>>> d1793d0ff2635d5a8acd3e2c63a2c9cdb56f360e
  * Solicita el nombre del jugador, y se encarga de que el nombre sea alfabetico (contenga letras)
  * @return string
  */
@@ -347,14 +264,10 @@ $coleccionPartidas=cargarPartidas();
 $cantPartidas=count($coleccionPartidas);
 $cantPalabras=count($coleccionPalabras);
 
-<<<<<<< HEAD
 $cantPalabras = $cantPalabras-1;
 $j = 0;
 $parar = true;
 $i = 0;
-=======
-//Proceso:
->>>>>>> d1793d0ff2635d5a8acd3e2c63a2c9cdb56f360e
 
 $opcion=seleccionarOpcion();
 
@@ -362,7 +275,6 @@ do {
     
  switch ($opcion) {
      case 1: 
-<<<<<<< HEAD
 
 
             $jugador = solicitarJugador();
@@ -372,30 +284,11 @@ do {
 
             
 
-=======
-        $cantPalabras = $cantPalabras - 1;
-        $parar = true;
-        $i = 0;
-
-            $jugador = solicitarJugador();
-
-            echo "ingrese un numero de palabra";
-            $numPalabra = trim(fgets(STDIN));
-
-            $numPalabra = rangoValores($numPalabra, $cantPalabras);
-
->>>>>>> d1793d0ff2635d5a8acd3e2c63a2c9cdb56f360e
             while($i < $cantPartidas && $parar){
                 if($jugador == $coleccionPartidas[$i]["jugador"] && 
                     $coleccionPalabras[$numPalabra] == $coleccionPartidas[$i]["palabraWordix"]){
                     echo "debe ingresar otro numero de palabra que no este elegida ";
-<<<<<<< HEAD
                     $newPalabra = solicitarNumeroEntre(0, $cantPalabras);
-=======
-                    $newPalabra = trim(fgets(STDIN));
-                    
-                    $newPalabra = rangoValores($newPalabra, $cantPalabras);
->>>>>>> d1793d0ff2635d5a8acd3e2c63a2c9cdb56f360e
 
                     if($newPalabra != $numPalabra){ 
                     $parar = false;
@@ -416,7 +309,6 @@ do {
         break;
 
     case 2: 
-<<<<<<< HEAD
 
         $jugador = solicitarJugador();
 
@@ -433,28 +325,6 @@ do {
                 if($newPalabra != $numPalabra){ 
                     $parar = false;
                     $palabra = $coleccionPalabras[$newPalabra];
-=======
-        $cantPalabras = $cantPalabras-1;
-        $j = 0;
-        $parar = true;
-
-
-        $jugador = solicitarJugador();
-
-        $nums = rand(0,$cantPalabras);
-        echo $nums;
-
-       $palabra = $coleccionPalabras[$nums];
-
-        while($j < $cantPartidas && $parar){
-            if($jugador == $coleccionPartidas[$j]["jugador"] && 
-            $coleccionPalabras[$nums] == $coleccionPartidas[$j]["palabraWordix"]){
-                $numPalabra = rand(0,$cantPalabras);
-         
-                if($numPalabra != $nums){ 
-                    $parar = false;
-                    $palabra = $coleccionPalabras[$numPalabra];
->>>>>>> d1793d0ff2635d5a8acd3e2c63a2c9cdb56f360e
                 }
             }
         $j = $j + 1;
@@ -467,35 +337,19 @@ do {
         imprimirResultado($partida);
 
         break;
-<<<<<<< HEAD
-=======
-
-    case 3: 
-        echo "ingrese un numero de  partida";
-        $numPartida = trim(fgets(STDIN));
->>>>>>> d1793d0ff2635d5a8acd3e2c63a2c9cdb56f360e
 
     case 3: 
 
-<<<<<<< HEAD
         echo "ingrese un numero de  partida";
         $numPartida = solicitarNumeroEntre(0, $cantPartidas);
-=======
-        $numPartida = rangoValores($numPartida, $cantPartidas);
->>>>>>> d1793d0ff2635d5a8acd3e2c63a2c9cdb56f360e
 
         datosPartida($coleccionPartidas,$numPartida);
 
         break;
 
     case 4:
-<<<<<<< HEAD
      
         $jugador = solicitarJugador();
-=======
-        echo "ingrese el nombre del jugador";
-        $jugador = trim(fgets(STDIN));
->>>>>>> d1793d0ff2635d5a8acd3e2c63a2c9cdb56f360e
 
         if (primerPartida($coleccionPartidas, $jugador) != -1){
             echo primerPartida($coleccionPartidas, $jugador);
@@ -507,7 +361,6 @@ do {
         break;
 
     case 5:
-<<<<<<< HEAD
 
         $jugador = solicitarJugador();
 
@@ -531,29 +384,6 @@ do {
 
         print_r($coleccionPalabras);
 
-=======
-        echo "ingrese un nombre de jugador";
-        $jugador = trim(fgets(STDIN));
-
-        echo mostrarDatos($coleccionPartidas, $jugador);
-
-        break;
-
-    case 6:
-        uasort($coleccionPartidas, 'ordenamiento');
-
-        print_r($coleccionPartidas);
-
-        break;
-
-    case 7:
-        $palabra = leerPalabra5letras();
-
-        $coleccionPalabras = agregarPalabra($coleccionPalabras,$palabra);
-
-        print_r($coleccionPalabras);
-
->>>>>>> d1793d0ff2635d5a8acd3e2c63a2c9cdb56f360e
         break;
                    
     }
