@@ -13,6 +13,10 @@ Universidad Nacional del Comahue
 **Muñoz Braian Santiago** - Legajo 5558 - mail: ssantii.m13@gmail.com - github: santiimunoz
 **Ortiz Lucas Emiliano** - Legajo 5561 - mail: lucaseortiz45@gmail.com - github: luquitas45
 
+**LINK DE EL PROJECTO EN GITHUB**
+
+https://github.com/santiimunoz/wordix
+
 
 
 
